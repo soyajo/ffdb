@@ -8,6 +8,7 @@ class FfdbApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
