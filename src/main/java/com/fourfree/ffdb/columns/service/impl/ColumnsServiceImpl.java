@@ -26,7 +26,7 @@ public class ColumnsServiceImpl implements ColumnsService {
         if (table_name != null && table_schema != null) {
             List<ColumnsVO> columnsVOS  = columnsRepo.findByTable_schemaAndTable_name(table_schema, table_name);
             columnsVOS.stream().forEach(columnsVO -> {
-                
+                // 컬럼 타입에 맞춰 객체 타입 만들어주기
             });
             return columnsVOS;
         } else {
