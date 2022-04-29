@@ -22,11 +22,10 @@ import java.util.List;
 public interface ColumnsRepo extends JpaRepository<ColumnsVO, String>{
     List<ColumnsVO> findAllBy();
 
-    @Query(nativeQuery = true, value = "" +
-            "SELECT * \n" +
-            "FROM INFORMATION_SCHEMA.COLUMNS \n" +
-            "WHERE TABLE_NAME LIKE '%%' \n" +
-            "AND TABLE_SCHEMA  = :table_schema \n" +
-            "AND TABLE_NAME = :table_name")
-    List<ColumnsVO> findByTable_schemaAndTable_name(@Param("table_schema")String table_schema,@Param("table_name") String table_name);
+    //    @Query(nativeQuery = true, value = "" +
+//            "SELECT * \n" +
+//            "FROM INFORMATION_SCHEMA.COLUMNS \n" +
+//            "WHERE TABLE_SCHEMA  = :table_schema \n" +
+//            "AND TABLE_NAME = :table_name")
+    List<ColumnsVO> findByTable_schemaAndTable_name(@Param("table_schema") String table_schema, @Param("table_name") String table_name);
 }

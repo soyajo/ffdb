@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 1. 프로젝트명 : ffdb
@@ -33,12 +30,19 @@ public class ColumnsVO {
     @Column(name = "COLUMN_NAME")
     private String column_name;
 
+    @Column(name = "COLUMN_COMMENT")
+    private String column_comment;
+
     @Column(name = "COLUMN_TYPE")
     private String column_type;
 
     @Column(name = "IS_NULLABLE")
-    private Integer is_nullable;
+    private String is_nullable;
 
     @Column(name = "COLUMN_DEFAULT")
-    private Integer column_default;
+    private String column_default;
+
+    // 객체 타입
+    @Transient
+    private String object_type;
 }

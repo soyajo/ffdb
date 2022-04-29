@@ -23,7 +23,15 @@ public class ColumnsServiceImpl implements ColumnsService {
 
     @Override
     public List<ColumnsVO> findByTable_schemaAndTable_name(String table_schema, String table_name) {
+        if (table_name != null && table_schema != null) {
+            List<ColumnsVO> columnsVOS  = columnsRepo.findByTable_schemaAndTable_name(table_schema, table_name);
+            columnsVOS.stream().forEach(columnsVO -> {
+                
+            });
+            return columnsVOS;
+        } else {
+            return new ArrayList<>();
+        }
 
-        return columnsRepo.findByTable_schemaAndTable_name(table_schema, table_name);
     }
 }

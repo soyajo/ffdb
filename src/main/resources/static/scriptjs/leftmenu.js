@@ -27,7 +27,7 @@ $(document).ready(function(){
                     $('#menu').append(menulist);
                     $.map(value1, function (value2, key2) {
                         menulist = '                                    <li class="nav-item">\n' +
-                            '                                        <a href="/" class="nav-link">\n' +
+                            '                                        <a href="/test02?table_schema='+value2.table_schema+'&table_name='+value2.table_name+'" class="nav-link">\n' +
                             '                                            <i class="far fa-circle nav-icon"></i>\n' +
                             '                                            <p>' + value2.table_name + '</p>\n' +
                             '                                        </a>\n' +

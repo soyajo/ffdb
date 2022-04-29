@@ -1,6 +1,8 @@
 package com.fourfree.ffdb.main.controller;
 
 
+import com.fourfree.ffdb.columns.service.ColumnsService;
+import com.fourfree.ffdb.columns.vo.ColumnsVO;
 import com.fourfree.ffdb.tables.service.TablesService;
 
 import com.fourfree.ffdb.tables.vo.TablesVO;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,13 +26,16 @@ import java.util.stream.Collectors;
 @Controller
 public class MainController {
 
+
     @Autowired
-    TablesService mainService;
+    ColumnsService columnsService;
+    @Autowired
+    TablesService tablesService;
 
     @PostMapping(value = "/menulist")
     @ResponseBody
     public Map<String,List<TablesVO>> menulist(String name) {
-        List<TablesVO> mainVOS = mainService.findByTABLE_SCHEMA();
+        List<TablesVO> mainVOS = tablesService.findByTABLE_SCHEMA();
         Map<String,List<TablesVO>> maplist = mainVOS.stream().collect(Collectors.groupingBy(TablesVO::getTable_schema));
         return maplist;
     }
@@ -48,5 +54,15 @@ public class MainController {
         model.addAttribute("flag", false);
 
         return "test01";
+    }
+
+    @GetMapping("/test02")
+    public String test02(Model model, String table_schema, String table_name) {
+
+        List<ColumnsVO> columnsVOS = columnsService.findByTable_schemaAndTable_name(table_schema, table_name);
+        model.addAttribute("table_schema", table_schema);
+        model.addAttribute("table_name", table_name);
+        model.addAttribute("columnsVOS", columnsVOS);
+        return "test02";
     }
 }

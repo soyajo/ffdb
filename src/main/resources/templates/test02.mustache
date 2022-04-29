@@ -1,0 +1,60 @@
+{{>layouts/defult_layout}}
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <h4>({{table_schema}})</h4>
+        <h3>{{table_name}}</h3>
+    </div>
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-4 m-2">
+                    <div class="card-header">
+                        {{table_name}}VO
+                    </div>
+                    <div class="card-body">
+                        <div class="row m-2">
+                            {{#columnsVOS}}
+                                // {{column_comment}}<br/>
+                                private String {{column_name}};<br/>
+                            {{/columnsVOS}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-success card-outline direct-chat direct-chat-success shadow-sm col-lg-7 m-2">
+                    <div class="card-header">
+                        mybatis select
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+
+                <div class="card card-danger card-outline direct-chat direct-chat-success shadow-sm col-lg-5 m-2">
+                    <div class="card-header">
+                        mybatis insert
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+
+                <div class="card card-fuchsia card-outline direct-chat direct-chat-success shadow-sm col-lg-6 m-2">
+                    <div class="card-header">
+                        mybatis update
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
