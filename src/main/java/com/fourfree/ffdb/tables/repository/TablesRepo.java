@@ -1,14 +1,13 @@
-package com.fourfree.ffdb.main.repository;
+package com.fourfree.ffdb.tables.repository;
 
-import com.fourfree.ffdb.main.vo.MainVO;
-import org.hibernate.sql.Select;
+
+import com.fourfree.ffdb.tables.vo.TablesVO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -20,9 +19,9 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public interface MainRepo extends JpaRepository<MainVO, String>{
-    List<MainVO> findAllBy();
+public interface TablesRepo extends JpaRepository<TablesVO, String>{
+    List<TablesVO> findAllBy();
 
     @Query(nativeQuery = true, value = "select * from information_schema.TABLES where TABLE_SCHEMA in (:table_schemas)")
-    List<MainVO> findByTABLE_SCHEMAIn(@Param("table_schemas") List<String> table_schemas);
+    List<TablesVO> findByTABLE_SCHEMAIn(@Param("table_schemas") List<String> table_schemas);
 }

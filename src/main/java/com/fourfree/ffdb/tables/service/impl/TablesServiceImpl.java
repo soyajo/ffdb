@@ -1,8 +1,8 @@
-package com.fourfree.ffdb.main.service.impl;
+package com.fourfree.ffdb.tables.service.impl;
 
-import com.fourfree.ffdb.main.repository.MainRepo;
-import com.fourfree.ffdb.main.service.MainService;
-import com.fourfree.ffdb.main.vo.MainVO;
+import com.fourfree.ffdb.tables.repository.TablesRepo;
+import com.fourfree.ffdb.tables.service.TablesService;
+import com.fourfree.ffdb.tables.vo.TablesVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,18 +17,18 @@ import java.util.List;
  * 5. 이메일     : whthdi4693@naver.com
  */
 @Service
-public class MainServiceImpl implements MainService {
+public class TablesServiceImpl implements TablesService {
     @Autowired
-    MainRepo mainRepo;
+    TablesRepo mainRepo;
 
     @Override
-    public List<MainVO> findAllBy() {
+    public List<TablesVO> findAllBy() {
 
         return mainRepo.findAllBy();
     }
 
     @Override
-    public List<MainVO> findByTABLE_SCHEMA() {
+    public List<TablesVO> findByTABLE_SCHEMA() {
         List<String> schemalist = new ArrayList<>();
         schemalist.add("fourfree_intranet");
         schemalist.add("fourfree_sales");

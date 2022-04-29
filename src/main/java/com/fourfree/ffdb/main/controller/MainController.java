@@ -1,14 +1,15 @@
 package com.fourfree.ffdb.main.controller;
 
-import com.fourfree.ffdb.main.service.MainService;
-import com.fourfree.ffdb.main.vo.MainVO;
+
+import com.fourfree.ffdb.tables.service.TablesService;
+
+import com.fourfree.ffdb.tables.vo.TablesVO;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,19 +24,17 @@ import java.util.stream.Collectors;
 public class MainController {
 
     @Autowired
-    MainService mainService;
+    TablesService mainService;
 
     @PostMapping(value = "/menulist")
     @ResponseBody
-    public Map<String,List<MainVO>> menulist(String name) {
-        Gson gson = new Gson();
-        List<MainVO> mainVOS = mainService.findByTABLE_SCHEMA();
-        Map<String,List<MainVO>> maplist = mainVOS.stream().collect(Collectors.groupingBy(MainVO::getTable_schema));
-        String maplist_st = gson.toJson(maplist);
+    public Map<String,List<TablesVO>> menulist(String name) {
+        List<TablesVO> mainVOS = mainService.findByTABLE_SCHEMA();
+        Map<String,List<TablesVO>> maplist = mainVOS.stream().collect(Collectors.groupingBy(TablesVO::getTable_schema));
         return maplist;
     }
 
-    @GetMapping("/test01")
+    @GetMapping("/")
     public String test01(Model model) {
 
         model.addAttribute("name", "소야");

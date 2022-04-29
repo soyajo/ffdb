@@ -1,6 +1,6 @@
-package com.fourfree.ffdb.main.service;
+package com.fourfree.ffdb.tables.service;
 
-import com.fourfree.ffdb.main.vo.MainVO;
+import com.fourfree.ffdb.tables.vo.TablesVO;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import java.util.List;
  * 4. 작성자     : 조소야
  * 5. 이메일     : whthdi4693@naver.com
  */
-public interface MainService {
+public interface TablesService {
 
-    List<MainVO> findAllBy();
+    List<TablesVO> findAllBy();
 
-    List<MainVO> findByTABLE_SCHEMA();
+    List<TablesVO> findByTABLE_SCHEMA();
 }

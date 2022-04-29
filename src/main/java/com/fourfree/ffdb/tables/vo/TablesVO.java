@@ -1,12 +1,10 @@
-package com.fourfree.ffdb.main.vo;
+package com.fourfree.ffdb.tables.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.repository.query.Param;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * 1. 프로젝트명 : ffdb
@@ -20,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "TABLES")
-public class MainVO {
+public class TablesVO {
 
     @Column(name = "TABLE_CATALOG")
     private String table_catalog;
