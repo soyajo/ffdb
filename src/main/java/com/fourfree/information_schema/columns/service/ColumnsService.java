@@ -1,7 +1,6 @@
-package com.fourfree.ffdb.columns.service;
+package com.fourfree.information_schema.columns.service;
 
-import com.fourfree.ffdb.columns.vo.ColumnsVO;
-import org.springframework.data.repository.query.Param;
+import com.fourfree.information_schema.columns.vo.ColumnsVO;
 
 import java.util.List;
 

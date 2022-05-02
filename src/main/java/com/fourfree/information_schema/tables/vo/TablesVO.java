@@ -1,4 +1,4 @@
-package com.fourfree.ffdb.tables.vo;
+package com.fourfree.information_schema.tables.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

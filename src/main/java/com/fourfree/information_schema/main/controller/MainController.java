@@ -1,18 +1,16 @@
-package com.fourfree.ffdb.main.controller;
+package com.fourfree.information_schema.main.controller;
 
 
-import com.fourfree.ffdb.columns.service.ColumnsService;
-import com.fourfree.ffdb.columns.vo.ColumnsVO;
-import com.fourfree.ffdb.tables.service.TablesService;
+import com.fourfree.information_schema.columns.service.ColumnsService;
+import com.fourfree.information_schema.columns.vo.ColumnsVO;
+import com.fourfree.information_schema.tables.service.TablesService;
 
-import com.fourfree.ffdb.tables.vo.TablesVO;
-import com.google.gson.Gson;
+import com.fourfree.information_schema.tables.vo.TablesVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
 

@@ -12,6 +12,7 @@
         <div class="container-fluid">
 
             <div class="row">
+                 <!--VO-->
                 <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-4 m-2">
                     <div class="card-header">
                         {{table_name}}VO
@@ -20,36 +21,71 @@
                         <div class="row m-2">
                             {{#columnsVOS}}
                                 // {{column_comment}}<br/>
-                                private String {{column_name}};<br/>
+                                private {{object_type}} {{column_name}};<br/>
                             {{/columnsVOS}}
                         </div>
                     </div>
                 </div>
-
+                <!--셀렉트-->
                 <div class="card card-success card-outline direct-chat direct-chat-success shadow-sm col-lg-7 m-2">
                     <div class="card-header">
-                        mybatis select
+                        mybatis selectAll
                     </div>
                     <div class="card-body">
-
+                        <pre style="color: white;">
+                            SELECT * FROM {{table_name}}
+                            WHERE 1
+                            {{#columnsVOS}}
+                            &lt;if test="columnsVO.{{column_name}} != null and columnsVO.{{column_name}} !=''"&gt;
+                                AND {{column_name}} = #{columnsVO.{{column_name}}}
+                            &lt;/if&gt;
+                            {{/columnsVOS}}
+                        </pre>
                     </div>
                 </div>
-
+                <!--인설트-->
                 <div class="card card-danger card-outline direct-chat direct-chat-success shadow-sm col-lg-5 m-2">
                     <div class="card-header">
                         mybatis insert
                     </div>
                     <div class="card-body">
-
+                        <pre style="color: white;">
+                            INSERT INTO {{table_name}}
+                            &lt;trim prefix="SET" suffixOverrides=","&gt;
+                            {{#columnsVOS}}
+                            {{^pk_flag}}
+                                &lt;if test="columnsVO.{{column_name}} != null and columnsVO.{{column_name}} !=''"&gt;
+                                    {{column_name}} = #{columnsVO.{{column_name}}},
+                                &lt;/if&gt;
+                            {{/pk_flag}}
+                            {{/columnsVOS}}
+                            &lt;/trim&gt;
+                        </pre>
                     </div>
                 </div>
-
+                <!--업데이트-->
                 <div class="card card-fuchsia card-outline direct-chat direct-chat-success shadow-sm col-lg-6 m-2">
                     <div class="card-header">
                         mybatis update
                     </div>
                     <div class="card-body">
-
+                        <pre style="color: white;">
+                            UPDATE {{table_name}}
+                            &lt;trim prefix="SET" suffixOverrides=","&gt;
+                            {{#columnsVOS}}
+                            {{^pk_flag}}
+                                &lt;if test="columnsVO.{{column_name}} != null and columnsVO.{{column_name}} !=''"&gt;
+                                    {{column_name}} = #{columnsVO.{{column_name}}},
+                                &lt;/if&gt;
+                            {{/pk_flag}}
+                            {{/columnsVOS}}
+                            &lt;/trim&gt;
+                            {{#columnsVOS}}
+                            {{#pk_flag}}
+                            WHERE {{column_name}} = #{columnsVO.{{column_name}}}
+                            {{/pk_flag}}
+                            {{/columnsVOS}}
+                        </pre>
                     </div>
                 </div>
             </div>

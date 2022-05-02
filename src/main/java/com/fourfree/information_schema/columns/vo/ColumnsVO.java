@@ -1,4 +1,4 @@
-package com.fourfree.ffdb.columns.vo;
+package com.fourfree.information_schema.columns.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,32 +17,40 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Columns")
+@Table(name = "COLUMNS")
 public class ColumnsVO {
-
+    // 테이블 스키마
     @Column(name = "TABLE_SCHEMA")
     private String table_schema;
-
+    // 테이블 이름
     @Column(name = "TABLE_NAME")
     private String table_name;
-
+    // 컬럼 이름
     @Id
     @Column(name = "COLUMN_NAME")
     private String column_name;
-
+    // 컬럼 내용
     @Column(name = "COLUMN_COMMENT")
     private String column_comment;
-
+    // 컬럼 타입
     @Column(name = "COLUMN_TYPE")
     private String column_type;
-
+    // 널 여부
     @Column(name = "IS_NULLABLE")
     private String is_nullable;
-
+    // 컬럼 기본값
     @Column(name = "COLUMN_DEFAULT")
     private String column_default;
+    // 컬럼 키
+    @Column(name = "COLUMN_KEY")
+    private String column_key;
+
 
     // 객체 타입
     @Transient
     private String object_type;
+    //pk 유무
+    @Transient
+    private Boolean pk_flag;
+
 }

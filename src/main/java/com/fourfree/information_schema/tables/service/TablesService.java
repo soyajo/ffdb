@@ -1,6 +1,6 @@
-package com.fourfree.ffdb.tables.service;
+package com.fourfree.information_schema.tables.service;
 
-import com.fourfree.ffdb.tables.vo.TablesVO;
+import com.fourfree.information_schema.tables.vo.TablesVO;
 
 import java.util.List;
 

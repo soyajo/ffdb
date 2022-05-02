@@ -1,7 +1,7 @@
-package com.fourfree.ffdb.tables.repository;
+package com.fourfree.information_schema.tables.repository;
 
 
-import com.fourfree.ffdb.tables.vo.TablesVO;
+import com.fourfree.information_schema.tables.vo.TablesVO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -22,6 +22,6 @@ import java.util.List;
 public interface TablesRepo extends JpaRepository<TablesVO, String>{
     List<TablesVO> findAllBy();
 
-    @Query(nativeQuery = true, value = "select * from information_schema.TABLES where TABLE_SCHEMA in (:table_schemas)")
+    @Query(nativeQuery = true, value = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA IN (:table_schemas)")
     List<TablesVO> findByTABLE_SCHEMAIn(@Param("table_schemas") List<String> table_schemas);
 }

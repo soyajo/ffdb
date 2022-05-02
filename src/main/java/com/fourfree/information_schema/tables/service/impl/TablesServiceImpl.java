@@ -1,8 +1,9 @@
-package com.fourfree.ffdb.tables.service.impl;
+package com.fourfree.information_schema.tables.service.impl;
 
-import com.fourfree.ffdb.tables.repository.TablesRepo;
-import com.fourfree.ffdb.tables.service.TablesService;
-import com.fourfree.ffdb.tables.vo.TablesVO;
+
+import com.fourfree.information_schema.tables.repository.TablesRepo;
+import com.fourfree.information_schema.tables.service.TablesService;
+import com.fourfree.information_schema.tables.vo.TablesVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +39,6 @@ public class TablesServiceImpl implements TablesService {
             System.out.println(s);
         });
         return mainRepo.findByTABLE_SCHEMAIn(schemalist);
-//        return null;/
-
     }
 
 }
