@@ -8,17 +8,17 @@
     </div>
 
 
-    <section class="content">
+    <section class="content ">
         <div class="container-fluid">
 
-            <div class="row">
-                 <!--VO-->
-                <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-4 m-2">
+            <div class="row " >
+                <!--VO-->
+                <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
                     <div class="card-header">
                         {{table_name}}VO
                     </div>
                     <div class="card-body">
-                        <div class="row m-2">
+                        <div class="row m-2" style="font-size: 12px;">
                             {{#columnsVOS}}
                                 // {{column_comment}}<br/>
                                 private {{object_type}} {{column_name}};<br/>
@@ -27,12 +27,12 @@
                     </div>
                 </div>
                 <!--셀렉트-->
-                <div class="card card-success card-outline direct-chat direct-chat-success shadow-sm col-lg-7 m-2">
+                <div class="card card-success card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
                     <div class="card-header">
                         mybatis selectAll
                     </div>
-                    <div class="card-body">
-                        <pre style="color: white;">
+                    <div class="card-body" >
+                        <pre style="color: white;font-size: 12px;" >
                             SELECT * FROM {{table_name}}
                             WHERE 1
                             {{#columnsVOS}}
@@ -44,12 +44,12 @@
                     </div>
                 </div>
                 <!--인설트-->
-                <div class="card card-danger card-outline direct-chat direct-chat-success shadow-sm col-lg-5 m-2">
+                <div class="card card-danger card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
                     <div class="card-header">
                         mybatis insert
                     </div>
                     <div class="card-body">
-                        <pre style="color: white;">
+                        <pre style="color: white;font-size: 12px;">
                             INSERT INTO {{table_name}}
                             &lt;trim prefix="SET" suffixOverrides=","&gt;
                             {{#columnsVOS}}
@@ -64,12 +64,12 @@
                     </div>
                 </div>
                 <!--업데이트-->
-                <div class="card card-fuchsia card-outline direct-chat direct-chat-success shadow-sm col-lg-6 m-2">
+                <div class="card card-fuchsia card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
                     <div class="card-header">
                         mybatis update
                     </div>
                     <div class="card-body">
-                        <pre style="color: white;">
+                        <pre style="color: white;font-size: 12px;">
                             UPDATE {{table_name}}
                             &lt;trim prefix="SET" suffixOverrides=","&gt;
                             {{#columnsVOS}}

@@ -27,7 +27,7 @@ public class CtxConfig {
     @Primary
     @Autowired
     public ChainedTransactionManager transactionManager(
-            @Qualifier(Information_schemaJpaConfig.TransactionManager) PlatformTransactionManager txManager1,
+            @Qualifier(IntranetJpaConfig.TransactionManager) PlatformTransactionManager txManager1,
             @Qualifier(FF2011JpaConfig.TransactionManager) PlatformTransactionManager txManager2
     ) {
         return new ChainedTransactionManager(txManager1,txManager2);
