@@ -1,4 +1,10 @@
 {{>layouts/defult_layout}}
+<script>
+    $(document).ready(function () {
+        console.log({{table_name}});
+        alert("dd");
+    });
+</script>
 
 <div class="content-wrapper">
 
@@ -11,24 +17,26 @@
     <section class="content ">
         <div class="container-fluid">
 
-            <div class="row " >
+            <div class="row" >
                 <!--VO-->
                 <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
-                    <div class="card-header">
+                    <div class="card-header" style="font-size: 20px;">
                         {{table_name}}VO
                     </div>
                     <div class="card-body">
                         <div class="row m-2" style="font-size: 12px;">
+                            <pre style="color: white;font-size: 12px;">
                             {{#columnsVOS}}
-                                // {{column_comment}}<br/>
-                                private {{object_type}} {{column_name}};<br/>
+                            // {{column_comment}}
+                            private {{object_type}} {{column_name}};
                             {{/columnsVOS}}
+                            </pre>
                         </div>
                     </div>
                 </div>
                 <!--셀렉트-->
                 <div class="card card-success card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
-                    <div class="card-header">
+                    <div class="card-header" style="font-size: 20px;">
                         mybatis selectAll
                     </div>
                     <div class="card-body" >
@@ -45,7 +53,7 @@
                 </div>
                 <!--인설트-->
                 <div class="card card-danger card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
-                    <div class="card-header">
+                    <div class="card-header" style="font-size: 20px;">
                         mybatis insert
                     </div>
                     <div class="card-body">
@@ -65,7 +73,7 @@
                 </div>
                 <!--업데이트-->
                 <div class="card card-fuchsia card-outline direct-chat direct-chat-success shadow-sm col-lg-10 m-1">
-                    <div class="card-header">
+                    <div class="card-header" style="font-size: 20px;">
                         mybatis update
                     </div>
                     <div class="card-body">
@@ -91,6 +99,5 @@
             </div>
         </div>
     </section>
-
 </div>
 

@@ -14,17 +14,17 @@ $(document).ready(function(){
                 $.map(maplist, function (value1, key1) {
                     menulist = '<li class="nav-item">\n' +
                         '           <a href="#" class="nav-link">\n' +
-                        '               <i class="nav-icon fas fa-th"></i>\n' +
+                        '               <i class="nav-icon fas fa-list"></i>\n' +
                         '               <p>\n' +
                         '                       ' + key1 + '\n' +
                         '                   <i class="right fas fa-angle-left"></i>\n' +
                         '               </p>\n' +
                         '           </a>\n' +
-                        '           <ul class="nav nav-treeview" style="display: none;" data-depth="3">\n' +
+                        '           <ul class="nav nav-treeview" style="display: none;" data-mariadb-depth="3">\n' +
                         '           </ul>\n' +
                         '       </li>\n';
                     // console.log("key1 === " + key1);
-                    $("ul[data-depth='2']").append(menulist);
+                    $("ul[data-mariadb-depth='2']").append(menulist);
                     $.map(value1, function (value2, key2) {
                         menulist = '<li class="nav-item">\n' +
                             '           <a href="/test02?table_schema='+value2.table_schema+'&table_name='+value2.table_name+'" class="nav-link">\n' +
@@ -32,7 +32,7 @@ $(document).ready(function(){
                             '               <p>' + value2.table_name + '</p>\n' +
                             '           </a>\n' +
                             '       </li>\n';
-                        $("ul[data-depth='3']").append(menulist);
+                        $("ul[data-mariadb-depth='3']").append(menulist);
                         // console.log("key2 ===" + key2);
                         // console.log("value2 ===" + value2.table_name);
                     });

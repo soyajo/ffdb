@@ -53,4 +53,7 @@ public class ColumnsVO {
     @Transient
     private Boolean pk_flag;
 
+    @Transient
+    private Integer list_length;
+
 }
