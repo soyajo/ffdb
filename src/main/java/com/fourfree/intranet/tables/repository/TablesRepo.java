@@ -22,6 +22,6 @@ import java.util.List;
 public interface TablesRepo extends JpaRepository<TablesVO, String>{
     List<TablesVO> findAllBy();
 
-    @Query(nativeQuery = true, value = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA IN (:table_schemas)")
+    @Query(nativeQuery = true, value = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA IN (:table_schemas) AND TABLE_TYPE ='BASE TABLE' ORDER BY TABLE_NAME ASC")
     List<TablesVO> findByTABLE_SCHEMAIn(@Param("table_schemas") List<String> table_schemas);
 }

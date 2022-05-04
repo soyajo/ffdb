@@ -1,0 +1,166 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{thymeleaf/layout/defult}">
+<th:block xmlns:th="http://www.thymeleaf.org" layout:fragment="custom_css">
+</th:block>
+<th:block xmlns:th="http://www.thymeleaf.org" layout:fragment="custom_js">
+</th:block>
+
+
+<th:block layout:fragment="content-header" xmlns:th="http://www.thymeleaf.org" >
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <th:block th:if="${table_name ne null}" >
+                    <h1 class="m-0" th:utext="${table_name}"></h1>
+                </th:block>
+                <th:block th:if="${table_name eq null}" >
+                    <h1 class="m-0" th:text="MAIN"></h1>
+                </th:block>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+<!--                    <li class="breadcrumb-item active"></li>-->
+                </ol>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content" xmlns:th="http://www.thymeleaf.org" >
+    <th:block th:if="${table_name eq null}" >
+        <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-11 m-2 ">
+            <div class="card-header">
+                <h3 class="card-title" >메뉴 선택 시 mybatis 기본 CRUD가 자동완성 됩니다!</h3>
+                <div class="card-tools">
+
+                </div>
+            </div>
+            <div class="card-body" >
+                <div class=" m-4" style="font-size: 12px;">
+                </div>
+            </div>
+        </div>
+    </th:block>
+    <th:block th:unless="${table_name eq null}" >
+        <!--VO-->
+        <div class="card card-blue card-outline direct-chat direct-chat-success shadow-sm col-lg-11 m-2 collapsed-card">
+
+            <div class="card-header">
+                <h3 class="card-title" th:utext="${camel_tb_name+'VO'}"></h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" >
+                <div class=" m-4" style="font-size: 12px;">
+                    <th:block th:each="item1 : ${columnsVOS}">
+                        <th:out th:utext="${'// ' + item1.column_comment}" ></th:out><br/>
+                        <th:out th:utext="${'private ' + item1.object_type + ' ' + item1.column_name}" ></th:out><br/>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+        <!--셀렉트-->
+        <div class="card card-info card-outline direct-chat direct-chat-success shadow-sm col-lg-11 m-2 collapsed-card">
+            <div class="card-header">
+                <h3 class="card-title">mybatis selectAll</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" >
+                <div class=" m-4" style="font-size: 12px;">
+                    SELECT * FROM [[${table_name}]]<br/>
+                    WHERE 1<br/>
+                    <th:block th:each="item1 : ${columnsVOS}">
+                        &lt;if test="[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] != null and [[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] !=''"&gt;<br/>
+                        &emsp;AND [[${item1.column_name}]] = #{[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]]}<br/>
+                        &lt;/if&gt;<br/>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+        <!--인설트-->
+        <div class="card card-success card-outline direct-chat direct-chat-success shadow-sm col-lg-11 m-2 collapsed-card">
+            <div class="card-header">
+                <h3 class="card-title">mybatis insert</h3>
+                <div class="card-tools" >
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class=" m-4" style="font-size: 12px;">
+                    INSERT INTO [[${table_name}]]<br/>
+                    &lt;trim prefix="SET" suffixOverrides=","&gt;<br/>
+                    <th:block th:each="item1 : ${columnsVOS}" th:if="${item1.pk_flag eq false}">
+                        &emsp;&lt;if test="[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] != null and [[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] !=''"&gt;<br/>
+                        &emsp;&emsp;[[${item1.column_name}]] = #{[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]]},<br/>
+                        &emsp;&lt;/if&gt;<br/>
+                    </th:block>
+                    &lt;/trim&gt;<br/>
+                </div>
+            </div>
+        </div>
+        <!--업데이트-->
+        <div class="card card-yellow card-outline direct-chat direct-chat-success shadow-sm col-lg-11 m-2 collapsed-card">
+            <div class="card-header">
+                <h3 class="card-title">mybatis update</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class=" m-4" style="font-size: 12px;">
+                    UPDATE [[${table_name}]]<br/>
+                    &lt;trim prefix="SET" suffixOverrides=","&gt;<br/>
+                    <th:block th:each="item1 : ${columnsVOS}" >
+                        <th:block th:if="${item1.pk_flag eq false}">
+                            &emsp;&lt;if test="[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] != null and [[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] !=''"&gt;<br/>
+                            &emsp;&emsp;[[${item1.column_name}]] = #{[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]]},<br/>
+                            &emsp;&lt;/if&gt;<br/>
+                        </th:block>
+                    </th:block>
+                    &lt;/trim&gt;<br/>
+                    <th:out th:each="item1 : ${columnsVOS}" th:if="${item1.pk_flag eq true}" th:utext="${'WHERE '+ item1.column_name + ' = #{'+ item1.camel_tb_name+'VO.'+item1.column_name+'}'}"></th:out><br/>
+                </div>
+            </div>
+        </div>
+
+        <!--delete-->
+        <div class="card card-danger card-outline direct-chat direct-chat-success shadow-sm col-lg-11 m-2 collapsed-card">
+            <div class="card-header">
+                <h3 class="card-title">mybatis delete</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class=" m-4" style="font-size: 12px;">
+                    DELETE FROM [[${table_name}]]<br/>
+                    &lt;trim prefix="SET" suffixOverrides=","&gt;<br/>
+                    <th:block th:each="item1 : ${columnsVOS}" >
+                        <th:block th:if="${item1.pk_flag eq false}">
+                            &emsp;&lt;if test="[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] != null and [[${item1.camel_tb_name}]]VO.[[${item1.column_name}]] !=''"&gt;<br/>
+                            &emsp;&emsp;[[${item1.column_name}]] = #{[[${item1.camel_tb_name}]]VO.[[${item1.column_name}]]},<br/>
+                            &emsp;&lt;/if&gt;<br/>
+                        </th:block>
+                    </th:block>
+                    &lt;/trim&gt;<br/>
+                    <th:out th:each="item1 : ${columnsVOS}" th:if="${item1.pk_flag eq true}" th:utext="${'WHERE '+ item1.column_name + ' = #{'+ item1.camel_tb_name+'VO.'+item1.column_name+'}'}"></th:out><br/>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</th:block>
+
+</html>

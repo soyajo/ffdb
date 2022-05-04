@@ -49,11 +49,10 @@ public class ColumnsVO {
     // 객체 타입
     @Transient
     private String object_type;
-    //pk 유무
+    // pk 유무
     @Transient
     private Boolean pk_flag;
-
+    // 테이블 이름(카멜 케이스)
     @Transient
-    private Integer list_length;
-
+    private String camel_tb_name;
 }

@@ -5,6 +5,7 @@ import com.fourfree.intranet.columns.repository.ColumnsRepo;
 import com.fourfree.intranet.columns.service.ColumnsService;
 import com.fourfree.intranet.columns.vo.ColumnsVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -61,6 +62,10 @@ public class ColumnsServiceImpl implements ColumnsService {
                         }
                     } else {
                         columnsVO.setPk_flag(false);
+                    }
+                    if (columnsVO.getTable_name() != null) {
+                        String camel_tb_name = JdbcUtils.convertUnderscoreNameToPropertyName(columnsVO.getTable_name());
+                        columnsVO.setCamel_tb_name(camel_tb_name);
                     }
                 }
             });

@@ -1,0 +1,31 @@
+
+<th:block th:fragment="meta" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+</th:block>
+
+<th:block th:fragment="css" xmlns:th="http://www.thymeleaf.org">
+    <!-- BootStrap CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" th:href="@{/plugin/AdminLTE/plugins/fontawesome-free/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/plugin/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+    <link rel="stylesheet" th:href="@{/plugin/AdminLTE/dist/css/adminlte.min.css}">
+    <th:block layout:fragment="custom_css"></th:block>
+</th:block>
+
+<th:block th:fragment="js" xmlns:th="http://www.thymeleaf.org">
+    <script th:src="@{/plugin/AdminLTE/plugins/jquery/jquery.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js}" ></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/dist/js/adminlte.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/raphael/raphael.min.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/plugins/chart.js/Chart.min.js}"></script>
+    <script th:src="@{/plugin/AdminLTE/dist/js/pages/dashboard2.js}"></script>
+    <script th:src="@{/scriptjs/leftmenu.js}"></script>
+    <th:block layout:fragment="custom_js"></th:block>
+</th:block>

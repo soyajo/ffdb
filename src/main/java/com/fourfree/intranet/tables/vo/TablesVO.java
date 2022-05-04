@@ -38,4 +38,7 @@ public class TablesVO {
 
     @Column(name = "VERSION")
     private Integer version;
+
+    @Transient
+    private String db_type = "mariadb";
 }

@@ -1,0 +1,44 @@
+<th:block th:fragment="leftmenu" xmlns:th="http://www.thymeleaf.org">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <a href="/" class="brand-link">
+            <span class="brand-text font-weight-light">ffdb</span>
+        </a>
+
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" >
+                    <li class="nav-item" th:attr="class= ${db_type eq 'mariadb' ? 'nav-item menu-is-opening menu-open' : 'nav-item'}">
+                        <a href="/docs/3.2/components" class="nav-link">
+                            <i class="nav-icon fas fa-server"></i>
+                            <p>
+                                mariaDB
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" th:each="item1 : ${mariadb_menulist}">
+                            <li th:attr="class = ${item1.key eq table_schema ? 'nav-item menu-is-opening menu-open' : 'nav-item'}">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-list"></i>
+                                    <p>
+                                        <span th:utext="${item1.key}"/>
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" th:each="item2 : ${item1.value}" >
+                                    <li th:attr="class = ${item2.table_name eq table_name ? 'nav-item menu-is-opening menu-open' : 'nav-item'}">
+                                        <a th:href="@{/(db_type=${item2.db_type}, table_schema=${item2.table_schema}, table_name=${item2.table_name})}" th:attr="class=${item2.table_name eq table_name ? 'nav-link active' : 'nav-link'}"  >
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p th:utext="${item2.table_name}"></p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </aside>
+</th:block>
